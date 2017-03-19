@@ -16,6 +16,7 @@ void ADC_start_conversion(void);
 #define ADC_ENABLE_INTERRUPT ADCSRA |= (1<<ADIE);
 #define ADC_DISABLE_INTERRUPT ADCSRA &= ~(1<<ADIE);
 
+//samples to calculate average from - max 64
 #define ADC_SAMPELS 15
 
 #define ADC_MAX_CHANNEL     6

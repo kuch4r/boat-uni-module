@@ -125,7 +125,7 @@ void ADC_task(void){
 		state--;	
 	}
 	else if(state < ADC_MAX_CHANNEL){
-		adc_results.analog_in[state] = ((((uint32_t)adc_results.raw_analog_in[state] + non_volatile_data.adc_channel_offset[state]))*non_volatile_data.adc_channel_scale[state]) / ADC_RAW_MAX_VAL;
+		adc_results.analog_in[state] = (((uint32_t)adc_results.raw_analog_in[state] * non_volatile_data.adc_channel_scale[state]) / ADC_RAW_MAX_VAL) + non_volatile_data.adc_channel_offset[state] ;
 		if(adc_results.analog_in[state] > non_volatile_data.adc_channel_max[state]){
 			adc_results.analog_in[state] = non_volatile_data.adc_channel_max[state];
 		}
