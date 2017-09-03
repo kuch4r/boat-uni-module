@@ -61,45 +61,45 @@ int main(void) {
 	
 	sei();
 
-	uart_puts_P("Unimodule\nCompilation date ");
-	uart_puts_P(__DATE__);
-	uart_puts_P("\n");
-	uart_puts_P("channel config:\n");
-	uart_puts_P("ch 1:");
+	//uart_puts_P("Unimodule\nCompilation date ");
+	//uart_puts_P(__DATE__);
+	//uart_puts_P("\n");
+	//uart_puts_P("channel config:\n");
+	//uart_puts_P("ch 1:");
 	if((channel_config & (1<<ADC_CHANNEL_1)) == ADC_IN){
-		uart_puts_P("analog\n");
+		//uart_puts_P("analog\n");
 	}
 	else{
-		uart_puts_P("ds18b20\n");
+		//uart_puts_P("ds18b20\n");
 	}
-	uart_puts_P("ch 2:");
+	//uart_puts_P("ch 2:");
 	if((channel_config & (1<<ADC_CHANNEL_2)) == ADC_IN){
-		uart_puts_P("analog\n");
+		//uart_puts_P("analog\n");
 	}
 	else{
-		uart_puts_P("ds18b20\n");
+		//uart_puts_P("ds18b20\n");
 	}
-	uart_puts_P("ch 3:");
+	//uart_puts_P("ch 3:");
 	if((channel_config & (1<<ADC_CHANNEL_3)) == ADC_IN){
-		uart_puts_P("analog\n");
+		//uart_puts_P("analog\n");
 	}
 	else{
-		uart_puts_P("ds18b20\n");
+		//uart_puts_P("ds18b20\n");
 	}
-	uart_puts_P("ch 4:");
+	//uart_puts_P("ch 4:");
 	if((channel_config & (1<<ADC_CHANNEL_4)) == ADC_IN){
-		uart_puts_P("analog\n");
+		//uart_puts_P("analog\n");
 	}
 	else{
-		uart_puts_P("ds18b20\n");
+		//uart_puts_P("ds18b20\n");
 	}
-	uart_puts_P("ch 5:analog\n");
-	uart_puts_P("ch 6:analog\n");
+	//uart_puts_P("ch 5:analog\n");
+	//uart_puts_P("ch 6:analog\n");
 	
 	//próba odczytu konfiguracji z EEPROMU, jeœli odczyt siê nie powiód³ przypisujemy wartoœci domyœlne
 	if(eeprom_read() == EEPROM_ERROR){
 		eeprom_restore_defaults();
-		uart_puts_P("Loading default values");
+		//uart_puts_P("Loading default values");
 	}
 	
 	

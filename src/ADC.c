@@ -113,7 +113,7 @@ void ADC_start_conversion(){
 void ADC_task(void){
 	static uint8_t state = ADC_MAX_CHANNEL; 
 	/* if we have new results */
-	if( HAS_FLAG(adc_state.flags, ADC_FLAG_CONV_COMPLETED && state == ADC_MAX_CHANNEL)) {
+	if( state == ADC_MAX_CHANNEL) {
 		//divide sum to get average value
 		for( uint8_t i=0; i< ADC_MAX_CHANNEL; i++){
 			//if channel is active
@@ -124,7 +124,7 @@ void ADC_task(void){
 		}
 		state--;	
 	}
-	else if(state < ADC_MAX_CHANNEL){
+	else if(HAS_FLAG(adc_state.flags, ADC_FLAG_CONV_COMPLETED) && state < ADC_MAX_CHANNEL){
 		adc_results.analog_in[state] = (((uint32_t)adc_results.raw_analog_in[state] * non_volatile_data.adc_channel_scale[state]) / ADC_RAW_MAX_VAL) + non_volatile_data.adc_channel_offset[state] ;
 		if(adc_results.analog_in[state] > non_volatile_data.adc_channel_max[state]){
 			adc_results.analog_in[state] = non_volatile_data.adc_channel_max[state];
